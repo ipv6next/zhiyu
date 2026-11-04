@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>知遇 · 我的</title>
+  <link rel="stylesheet" href="premeet.css">
+  <link rel="stylesheet" href="account-center.css">
+</head>
+<body class="discover-page my-page">
+  <main>
+    <header class="my-head"><b>我的</b><button id="settings-top" type="button" aria-label="账户与隐私">•••</button></header>
+    <section class="my-profile-card" aria-live="polite">
+      <div class="my-avatar" id="avatar">知</div>
+      <div class="my-profile-copy"><h1 id="nickname">正在读取…</h1><p id="profile-meta">正在读取资料</p><div><span class="identity-badge" id="role-badge">知遇用户</span><span class="verify-badge" id="verify-badge">资料待完善</span></div></div>
+      <a class="edit-profile" id="edit-profile" href="profile.html">✎ 编辑资料</a>
+    </section>
+    <section class="my-stats" aria-label="我的数据">
+      <a href="likes.html"><strong id="liked-by">—</strong><span>喜欢我的</span></a>
+      <a href="likes.html"><strong id="liked">—</strong><span>我想认识的</span></a>
+      <a href="member.html"><strong id="premeet-count">—</strong><span>预会面</span></a>
+    </section>
+    <a class="my-promo" id="promo-link" href="service.html" aria-label="知遇推荐服务">
+      <span class="promo-copy"><b id="promo-title">知遇 · 精准匹配</b><small id="promo-description">把合适的人带到你面前</small></span>
+      <span class="promo-action" id="promo-action">开始匹配</span><span class="promo-orb">知</span>
+      <span class="promo-dots" id="promo-dots" aria-hidden="true"><i class="active"></i><i></i><i></i></span>
+    </a>
+    <section class="my-shortcuts">
+      <a id="shortcut-profile" href="profile.html"><i>◌</i><span><b>编辑资料</b><small>资料与交友期待</small></span><em>›</em></a>
+      <button id="vip" type="button"><i>VIP</i><span><b>VIP 会员中心</b><small>8 项特权，脱单更快</small></span><em>›</em></button>
+    </section>
+    <section class="my-menu">
+      <button type="button" id="verify"><i>✿</i><b>我的认证</b><span id="verify-copy">待认证</span><em>›</em></button>
+      <button type="button" id="spotlight"><i>◔</i><b>聚光计划</b><span>免费提升曝光</span><em>›</em></button>
+      <button type="button" id="gift"><i>♧</i><b>脱单大礼包</b><span>免费领取</span><em>›</em></button>
+      <button type="button" id="share"><i>↗</i><b>分享得会员</b><span>免费领会员</span><em>›</em></button>
+      <button type="button" id="settings"><i>⚙</i><b>设置</b><span></span><em>›</em></button>
+    </section>
+    <section class="privacy-panel" id="privacy-panel" hidden>
+      <h2>账户与隐私</h2>
+      <p>你可以随时管理 AI 预会面授权，或在本地测试环境中删除账户资料。</p>
+      <button id="revoke" class="privacy-action" type="button" hidden>撤销 AI 预会面授权</button>
+      <button id="delete" class="privacy-delete" type="button">注销并删除我的数据</button>
+    </section>
+    <p id="notice" class="my-notice" aria-live="polite"></p>
+    <p class="my-id" id="account-id"></p>
+  </main>
+  <nav class="bottom-nav"><a href="service.html"><i>⌂</i>服务</a><a href="matches.html"><i>◉</i>发现</a><a href="curated.html"><i>✦</i>精选</a><a href="likes.html"><i>♡</i>喜欢</a><a class="active" href="account.html"><i>◡</i>我的</a></nav>
+  <script src="app.js"></script><script src="account.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>知遇 · 真人接管服务</title>
+  <link rel="stylesheet" href="premeet.css">
+</head>
+<body>
+  <main>
+    <header><a id="back" href="matches.html">← 返回</a><span>知遇 · 真人接管</span><span class="badge">本地测试</span></header>
+    <section class="intro"><small>双方已同意 · 7 天服务期</small><h1>真人交流已准备就绪</h1><p>本页只模拟服务状态，不会创建微信群、发送消息或代替两位真人沟通。正式上线后，系统将在双方授权后发送微信服务群入口。</p></section>
+    <article class="result-card"><span class="eyebrow" id="status">正在读取服务状态</span><h2 id="title">7 天真人接管服务</h2><p id="clock"></p><ul id="scope"></ul></article>
+    <article><h3>AI 红娘按需协助</h3><p>AI 不读取私聊，也不替你们推进关系。需要时可索取一个低压力的约见建议。</p><button id="suggest" class="primary">获取约见建议</button><p id="suggestion" class="subtle"></p></article>
+    <article><h3>人工红娘协助</h3><p>可申请人工服务人员跟进。请求会作为服务工单处理，当前本地版不会联系真实人员。</p><button id="support">申请人工红娘协助</button><p id="support-state" class="subtle"></p></article>
+    <article><h3>投诉与安全协助</h3><p>提交内容仅作为本地工单记录，不向对方展示。</p><textarea id="report-detail" rows="3" maxlength="500" placeholder="请简要说明需要协助的情况"></textarea><button id="report">提交安全协助请求</button><p id="report-state" class="subtle"></p></article>
+    <p id="error" role="alert" hidden></p>
+  </main>
+  <script src="app.js"></script><script src="handoff.js"></script>
+</body>
+</html>

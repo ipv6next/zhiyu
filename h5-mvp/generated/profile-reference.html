@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知遇 - 完善您的资料</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-teal: #4db6ac;
+            --light-teal: #e0f2f1;
+            --warm-peach: #ffab91;
+            --soft-peach: #fbe9e7;
+            --bg-gray: #f8f9fa;
+            --text-dark: #333333;
+            --text-gray: #757575;
+            --border-color: #eeeeee;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 100px;
+        }
+
+        header {
+            background-color: var(--white);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        header i {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-right: 16px;
+        }
+
+        header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            flex-grow: 1;
+            text-align: center;
+            margin-right: 36px;
+        }
+
+        .tabs {
+            display: flex;
+            background: var(--white);
+            padding: 10px 16px;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+
+        .tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-gray);
+            background: var(--bg-gray);
+            border: 1px solid transparent;
+        }
+
+        .tab.active {
+            background: var(--primary-teal);
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-teal);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            background: var(--warm-peach);
+            margin-right: 8px;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .form-label span {
+            font-size: 12px;
+            color: var(--text-gray);
+            font-weight: normal;
+            margin-left: 4px;
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .option-grid.three {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .chip {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text-dark);
+            transition: all 0.2s;
+        }
+
+        .chip.selected {
+            background: var(--light-teal);
+            border-color: var(--primary-teal);
+            color: var(--primary-teal);
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .input-row:last-child {
+            border-bottom: none;
+        }
+
+        .input-label {
+            font-size: 15px;
+        }
+
+        .input-value {
+            color: var(--primary-teal);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-value i {
+            margin-left: 8px;
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .ai-twin-box {
+            background: linear-gradient(135deg, var(--light-teal) 0%, var(--soft-peach) 100%);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 10px;
+        }
+
+        .ai-twin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .ai-twin-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--primary-teal);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-teal);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        .ai-description {
+            font-size: 12px;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        .privacy-notice {
+            padding: 0 16px;
+            font-size: 12px;
+            color: var(--text-gray);
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .privacy-notice a {
+            color: var(--primary-teal);
+            text-decoration: none;
+        }
+
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            padding: 16px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--primary-teal);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .btn-primary:active {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <i class="fas fa-chevron-left"></i>
+        <h1>填写资料</h1>
+    </header>
+
+    <div class="tabs">
+        <div class="tab active">基础信息</div>
+        <div class="tab">性格偏好</div>
+        <div class="tab">理想对象</div>
+        <div class="tab">数字分身</div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2 class="section-title">核心身份</h2>
+            
+            <div class="form-group">
+                <label class="form-label">您的性别 <span>(提交后不可修改)</span></label>
+                <div class="option-grid">
+                    <div class="chip selected">男生</div>
+                    <div class="chip">女生</div>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <span class="input-label">出生日期 <span>(提交后不可修改)</span></span>
+                <span class="input-value">请选择 <i class="fas fa-chevron-right"></i></span>
+            </div>
+
+            <div class="input-row">
+                <span class="input-label">身高 (cm)</span>
+                <span class="input-value">请选择 <i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">教育与背景</h2>
+            
+            <div class="form-group">
+                <label class="form-label">最高学历</label>
+                <div class="option-grid three">
+                    <div class="chip">专科</div>
+                    <div class="chip selected">本科</div>
+                    <div class="chip">硕士</div>
+                    <div class="chip">博士</div>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <span class="input-label">常住城市</span>
+                <span class="input-value">点击定位 <i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title">前置交流设置</h2>
+            <div class="ai-twin-box">
+                <div class="ai-twin-header">
+                    <span class="ai-twin-title">开启「AI 数字分身」初见</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <p class="ai-description">
+                    开启后，系统将基于您的资料生成数字化形象，在您不在线时代表您与心动对象进行初步了解。仅在双方均授权时开启。
+                </p>
+            </div>
+        </div>
+
+        <div class="privacy-notice">
+            点击保存即代表您同意 <a href="#">《用户协议》</a> 与 <a href="#">《隐私政策》</a>
+            <br>知遇致力于保护您的隐私安全
+        </div>
+    </div>
+
+    <div class="fixed-footer">
+        <button class="btn-primary">保存并继续</button>
+    </div>
+
+    <script>
+        // Simple interactive chips
+        document.querySelectorAll('.chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                const siblings = this.parentElement.querySelectorAll('.chip');
+                siblings.forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

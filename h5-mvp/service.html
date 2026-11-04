@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>知遇 · 服务</title>
+  <link rel="stylesheet" href="premeet.css">
+</head>
+<body class="discover-page service-page">
+  <main>
+    <header class="service-head">
+      <div class="service-brand"><span class="brand-mark">Z</span><b>知遇服务</b></div>
+      <button class="service-help" type="button" data-more>•••</button>
+    </header>
+
+    <nav class="service-tabs" aria-label="服务分类">
+      <button type="button" class="active" data-tab="match">精准匹配</button>
+      <button type="button" data-tab="search">智能搜索</button>
+      <button type="button" data-tab="more">更多</button>
+    </nav>
+
+    <section class="service-panel active" id="panel-match">
+      <div class="match-welcome">
+        <span class="orb orb-one"></span><span class="orb orb-two"></span><span class="orb orb-three"></span>
+        <div class="service-illustration"><span>知</span></div>
+        <div class="welcome-copy">
+          <em>AI 婚恋顾问</em>
+          <h1>让每一次认识<br>更接近合拍</h1>
+          <p>根据你的公开资料、交友偏好与分身表达边界，为你推荐值得了解的人。</p>
+        </div>
+      </div>
+      <article class="service-dialogue">
+        <span class="dialogue-icon">✦</span>
+        <p>我会先帮你筛选，再由你决定是否想认识。你始终保留选择权。</p>
+        <button class="match-cta" type="button" data-go="matches.html">开始精准匹配</button>
+        <button class="record-link" type="button" data-go="likes.html">♡ 查看我想认识的人</button>
+      </article>
+      <div class="service-note"><span>◌</span> 预会面由候选真人主动发起；会员已授权的 AI 分身可自动进入房间。</div>
+    </section>
+
+    <section class="service-panel" id="panel-search" hidden>
+      <div class="search-hero">
+        <div><span class="kicker">知遇智能搜索</span><h1>找到你想认识的人</h1><p>把真正重要的条件告诉我，推荐会更贴近你的期待。</p></div>
+        <div class="search-orbit"><span>⌕</span></div>
+      </div>
+      <article class="criteria-card">
+        <div class="criteria-title"><div><h2>哪些条件必须满足？</h2><p>选择至多 4 项，优先用于推荐排序</p></div><b id="criteria-count">0 / 4</b></div>
+        <div class="criteria-grid" id="criteria-grid">
+          <button type="button" data-key="年龄"><strong>年龄</strong><small>合适区间</small></button>
+          <button type="button" data-key="身高"><strong>身高</strong><small>舒适范围</small></button>
+          <button type="button" data-key="学历"><strong>学历</strong><small>教育背景</small></button>
+          <button type="button" data-key="城市"><strong>城市</strong><small>现居或可发展</small></button>
+          <button type="button" data-key="婚育情况"><strong>婚育情况</strong><small>人生阶段</small></button>
+          <button type="button" data-key="收入"><strong>收入</strong><small>生活规划</small></button>
+          <button type="button" data-key="有房"><strong>是否有房</strong><small>资产安排</small></button>
+          <button type="button" data-key="是否异地"><strong>是否异地</strong><small>相处距离</small></button>
+        </div>
+      </article>
+      <article class="preference-card">
+        <label for="preference-text">补充一句你的期待 <span>选填</span></label>
+        <textarea id="preference-text" maxlength="120" placeholder="例如：希望对方沟通坦诚，愿意一起认真规划未来"></textarea>
+        <p>这些内容只用于改善推荐，不会直接展示给其他用户。</p>
+      </article>
+      <button type="button" class="apply-search" id="apply-search">应用条件，查看推荐</button>
+    </section>
+
+    <section class="service-panel" id="panel-more" hidden>
+      <div class="more-intro"><span class="kicker">知遇陪伴</span><h1>把认识的每一步<br>交给更合适的服务</h1><p>从资料、匹配到预会面，帮助你更从容地了解一个人。</p></div>
+      <div class="more-grid">
+        <button type="button" class="more-card twin-card" data-go="twin.html"><span>✦</span><b>AI 数字分身</b><small>管理表达档案与优先话题</small><i>›</i></button>
+        <button type="button" class="more-card profile-card" data-go="profile.html"><span>◎</span><b>完善我的资料</b><small>让推荐更理解你的期待</small><i>›</i></button>
+        <button type="button" class="more-card guide-card" data-tab-target="search"><span>⌕</span><b>交友偏好</b><small>调整推荐时优先考虑的条件</small><i>›</i></button>
+        <button type="button" class="more-card privacy-card" data-go="account.html"><span>♧</span><b>账户与隐私</b><small>管理展示资料和服务授权</small><i>›</i></button>
+      </div>
+      <article class="service-safety"><span>♥</span><div><b>知遇安全守护</b><p>发现异常、感到不适或需要帮助时，都可以在这里管理账户与反馈。</p></div><button type="button" data-go="account.html">查看</button></article>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="主导航">
+    <a class="active" href="service.html"><i>⌂</i>服务</a>
+    <a href="matches.html"><i>◉</i>发现</a>
+    <a href="curated.html"><i>✦</i>精选</a>
+    <a href="likes.html"><i>♡</i>喜欢</a>
+    <a href="account.html"><i>◡</i>我的</a>
+  </nav>
+  <script src="app.js"></script><script src="service.js"></script>
+</body>
+</html>

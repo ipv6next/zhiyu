@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>知遇 - 开启你的缘分</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-teal: #4db6ac;
+            --primary-ink: #263238;
+            --primary-peach: #ffab91;
+            --bg-light: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #37474f;
+            --text-muted: #90a4ae;
+            --accent-soft: #e0f2f1;
+            --border-color: #eceff1;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-light);
+            z-index: 100;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-ink);
+        }
+
+        .tabs-container {
+            padding: 0 16px 12px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: var(--text-muted);
+            background: #fff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .tab.active {
+            background: var(--primary-teal);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .content-section {
+            display: none;
+            padding: 0 16px 100px;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .section-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-ink);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .label {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .label-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            padding: 8px 16px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .chip.selected {
+            background: var(--accent-soft);
+            border-color: var(--primary-teal);
+            color: var(--primary-teal);
+        }
+
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .input-row:last-child {
+            border-bottom: none;
+        }
+
+        .value-placeholder {
+            color: var(--primary-teal);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .album-item {
+            aspect-ratio: 1;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 12px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .album-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .privacy-hint {
+            background: var(--accent-soft);
+            color: var(--primary-teal);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: #fff;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .consent-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .consent-row input {
+            margin-top: 3px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary-teal);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .ai-badge {
+            background: var(--primary-peach);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        /* Range Slider Styling */
+        .range-container {
+            padding: 10px 0;
+        }
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .must-have-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <i class="fas fa-chevron-left" style="color: var(--primary-ink);"></i>
+        <div class="header-title">知遇 · 完善档案</div>
+        <i class="fas fa-ellipsis-h" style="color: var(--primary-ink);"></i>
+    </div>
+
+    <div class="tabs-container">
+        <div class="tab active" onclick="switchTab(0)">我的档案</div>
+        <div class="tab" onclick="switchTab(1)">生活与婚恋</div>
+        <div class="tab" onclick="switchTab(2)">匹配偏好</div>
+    </div>
+
+    <!-- Tab 1: 我的档案 -->
+    <div id="section-0" class="content-section active">
+        <div class="card">
+            <div class="section-title">核心信息 <span class="label-hint">(实名认证后不可更改)</span></div>
+            <div class="form-group">
+                <div class="label">性别</div>
+                <div class="chip-group">
+                    <div class="chip selected" onclick="toggleChip(this)">男</div>
+                    <div class="chip" onclick="toggleChip(this)">女</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="label" style="margin:0">出生日期</div>
+                <div class="value-placeholder">1995-06-15 <i class="fas fa-chevron-right"></i></div>
+            </div>
+            <div class="input-row">
+                <div class="label" style="margin:0">身高 (cm)</div>
+                <div class="value-placeholder">178 <i class="fas fa-chevron-right"></i></div>
+            </div>
+            <div class="input-row">
+                <div class="label" style="margin:0">常驻城市</div>
+                <div class="value-placeholder">杭州 · 滨江 <i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">我的相册</div>
+            <div class="privacy-hint">
+                <i class="fas fa-shield-alt"></i>
+                互相关注或互动超过3轮，对方方可查看全部相册
+            </div>
+            <div class="album-grid">
+                <div class="album-item" style="border-color: var(--primary-teal); color: var(--primary-teal);">
+                    <i class="fas fa-camera"></i>
+                    <span>上传封面</span>
+                </div>
+                <div class="album-item">
+                    <i class="fas fa-plus"></i>
+                    <span>生活点滴</span>
+                </div>
+                <div class="album-item">
+                    <i class="fas fa-plus"></i>
+                    <span>旅行足迹</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">教育与工作</div>
+            <div class="form-group">
+                <div class="label">最高学历</div>
+                <div class="chip-group">
+                    <div class="chip" onclick="toggleChip(this)">本科</div>
+                    <div class="chip selected" onclick="toggleChip(this)">硕士</div>
+                    <div class="chip" onclick="toggleChip(this)">博士</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="label" style="margin:0">毕业院校</div>
+                <div class="value-placeholder">浙江大学 <i class="fas fa-chevron-right"></i></div>
+            </div>
+            <div class="input-row">
+                <div class="label" style="margin:0">行业</div>
+                <div class="value-placeholder">互联网/科技 <i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab 2: 生活与婚恋 -->
+    <div id="section-1" class="content-section">
+        <div class="card">
+            <div class="section-title">婚恋价值观</div>
+            <div class="form-group">
+                <div class="label">期望结婚时间</div>
+                <div class="chip-group">
+                    <div class="chip" onclick="toggleChip(this)">1年内</div>
+                    <div class="chip selected" onclick="toggleChip(this)">1-2年</div>
+                    <div class="chip" onclick="toggleChip(this)">看缘分</div>
+                </div>
+            </div>
+            <div class="input-row">
+                <div class="label" style="margin:0">关于孩子</div>
+                <div class="value-placeholder">想要小孩 <i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">个人标签 <span class="label-hint">(选3-5个)</span></div>
+            <div class="chip-group">
+                <div class="chip selected" onclick="toggleChip(this)">健身达人</div>
+                <div class="chip" onclick="toggleChip(this)">厨艺加分</div>
+                <div class="chip selected" onclick="toggleChip(this)">铲屎官</div>
+                <div class="chip" onclick="toggleChip(this)">技术宅</div>
+                <div class="chip selected" onclick="toggleChip(this)">摄影控</div>
+                <div class="chip" onclick="toggleChip(this)">户外爱好者</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                AI 红娘面试
+                <span class="ai-badge">NEW</span>
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">通过 AI 语音对话，让系统更精准地为您推荐心仪对象。</p>
+            <div class="btn-submit" style="background: var(--accent-soft); color: var(--primary-teal); text-align: center; font-size: 14px;">
+                开启面试对话
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab 3: 匹配偏好 -->
+    <div id="section-2" class="content-section">
+        <div class="card">
+            <div class="section-title">基本匹配范围</div>
+            <div class="range-container">
+                <div class="label">年龄范围 <span style="float:right; color:var(--primary-teal)">24 - 32 岁</span></div>
+                <div style="height:4px; background:var(--accent-soft); border-radius:2px; position:relative; margin: 15px 0">
+                    <div style="position:absolute; left:20%; right:30%; top:0; bottom:0; background:var(--primary-teal)"></div>
+                </div>
+            </div>
+            <div class="range-container">
+                <div class="label">身高要求 <span style="float:right; color:var(--primary-teal)">160cm 以上</span></div>
+                <div style="height:4px; background:var(--accent-soft); border-radius:2px; position:relative; margin: 15px 0">
+                    <div style="position:absolute; left:40%; right:0; top:0; bottom:0; background:var(--primary-teal)"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title" style="margin-bottom: 4px;">硬性指标 (最多4项)</div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">标记为您最看重的条件，匹配时将优先考虑</p>
+            <div class="must-have-grid">
+                <div class="chip" style="text-align:center" onclick="toggleChip(this)">学历要求</div>
+                <div class="chip selected" style="text-align:center" onclick="toggleChip(this)">现居地</div>
+                <div class="chip" style="text-align:center" onclick="toggleChip(this)">年收入</div>
+                <div class="chip selected" style="text-align:center" onclick="toggleChip(this)">购房情况</div>
+                <div class="chip" style="text-align:center" onclick="toggleChip(this)">独生子女</div>
+                <div class="chip" style="text-align:center" onclick="toggleChip(this)">烟酒习惯</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="consent-row">
+            <input type="checkbox" checked id="consent">
+            <label for="consent">
+                我已阅读并同意《隐私政策》，并授权创建“数字孪生”画像以进行智能匹配，该画像仅用于平台内部推荐。
+            </label>
+        </div>
+        <button class="btn-submit">确认并提交</button>
+    </div>
+
+    <script>
+        function switchTab(index) {
+            // Update tabs UI
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach((tab, i) => {
+                if(i === index) tab.classList.add('active');
+                else tab.classList.remove('active');
+            });
+
+            // Update content visibility
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach((section, i) => {
+                if(i === index) section.classList.add('active');
+                else section.classList.remove('active');
+            });
+            
+            // Scroll to top when switching
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleChip(element) {
+            // For gender or similar exclusive choices, handle logic if needed
+            // Simple toggle for now
+            element.classList.toggle('selected');
+        }
+    </script>
+</body>
+</html>

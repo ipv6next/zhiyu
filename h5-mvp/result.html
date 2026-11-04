@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>知遇 · 预会面回顾</title>
+  <link rel="stylesheet" href="premeet.css">
+</head>
+<body>
+  <main>
+    <header><a id="back-link" href="matches.html">← 返回</a><span>知遇 · 预会面回顾</span><span class="badge">本地测试</span></header>
+    <section id="result">
+      <small>仅自己可见 · 不默认共享聊天原文</small>
+      <h1>本次预会面回顾</h1>
+      <p id="reason">正在整理本次交流…</p>
+      <article class="result-card"><span class="eyebrow">AI 红娘观察</span><h3>给这段相识的一点建议</h3><div id="analysis" class="analysis">正在整理 AI 红娘的即时建议…</div><p id="analysis-status" class="subtle"></p><button id="deep-analysis" class="secondary" hidden>生成更深入的 AI 红娘建议</button><p class="subtle">AI 红娘是独立的婚恋关系顾问，不代表会员分身或任何一方本人。建议仅基于本次对话和双方已授权资料，不判断资料真实性，也不替双方作决定。</p></article>
+      <article><h3>你愿意与本人继续吗？</h3><p>双方都独立同意后，才开放真人交流入口。</p><div class="choices"><button id="yes" class="primary">我愿意真人继续</button><button id="no" class="secondary">暂不继续</button></div><p id="decision"></p></article>
+      <article id="calibration" hidden><h3>分身私密校准</h3><p>仅当某个主题反复出现或影响后续匹配时才提醒。一次只处理一个主题，不展示候选真人的原始提问；你也可以暂不处理。</p><div id="calibration-list"></div></article>
+      <article id="unlocked" hidden><h3>双方已同意 · 真人交流入口</h3><p>本地服务群记录已建立。正式上线后，双方会收到微信服务群入口；当前不会创建真实微信群。</p><a id="handoff-link" class="primary button-link">查看 7 天真人接管服务</a></article>
+      <a id="return-link" class="back" href="matches.html">返回</a>
+    </section>
+    <p id="error" role="alert" hidden></p>
+  </main>
+  <script src="app.js"></script><script src="result.js"></script>
+</body>
+</html>

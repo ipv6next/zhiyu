@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>知遇 · 开始认识</title>
+  <link rel="stylesheet" href="onboarding.css">
+  <link rel="stylesheet" href="onboarding-fixes.css">
+</head>
+<body class="welcome-page">
+  <main class="welcome-app">
+    <header class="welcome-top"><a class="welcome-logo" href="index.html"><span>✦</span>知遇</a><span class="welcome-note">AI 婚恋助手</span></header>
+    <div class="float-heart heart-a">♥</div><div class="float-heart heart-b">♥</div><div class="float-heart heart-c">♥</div>
+    <section class="welcome-hero">
+      <div class="welcome-avatar"><span>知</span></div>
+      <p class="welcome-kicker">更真实地认识，更从容地靠近</p>
+      <h1>你好，我是知遇</h1>
+      <p class="welcome-copy">先告诉我一点你的基本情况。<br>资料越完整，推荐越贴近你的期待。</p>
+    </section>
+    <footer class="welcome-footer">
+      <button id="start" class="welcome-start" type="button">马上开始</button>
+      <p>你的资料由你掌握；敏感信息默认不会公开。</p>
+      <details class="demo-entry"><summary>本机测试入口</summary><button id="existing-account" type="button">已有测试账号</button><button id="member-demo" type="button">会员测试身份</button><button id="candidate-demo" type="button">普通用户测试身份</button></details>
+    </footer>
+  </main>
+  <div class="onboard-mask" id="name-mask" hidden>
+    <section class="name-sheet" role="dialog" aria-modal="true" aria-labelledby="name-title">
+      <button class="sheet-close" type="button" data-close-name>×</button>
+      <span class="sheet-mark">✦</span><h2 id="name-title">先怎么称呼你？</h2>
+      <p>填写昵称后，就可以开始建立资料。</p>
+      <input id="nickname" maxlength="20" placeholder="例如：小林" autocomplete="nickname">
+      <button id="create" class="sheet-primary" type="button">开始填写资料</button>
+      <p class="sheet-error" id="error" hidden></p>
+    </section>
+  </div>
+  <div class="onboard-mask" id="account-mask" hidden>
+    <section class="name-sheet account-sheet" role="dialog" aria-modal="true" aria-labelledby="account-title">
+      <button class="sheet-close" type="button" data-close-account>×</button>
+      <span class="sheet-mark">◌</span><h2 id="account-title">选择已有测试账号</h2>
+      <p>仅用于本机联调；正式版本将使用微信一键登录。</p>
+      <div class="account-list" id="account-list"><p>正在读取已有账号…</p></div>
+      <p class="sheet-error" id="account-error" hidden></p>
+    </section>
+  </div>
+  <script src="app.js"></script><script src="onboarding.js"></script>
+</body>
+</html>

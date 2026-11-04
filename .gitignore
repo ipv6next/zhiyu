@@ -1,0 +1,15 @@
+.tools/
+.rea-tools/
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+dist/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+*.db
+uploads/
+*.log

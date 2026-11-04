@@ -1,0 +1,43 @@
+/* Kept separately so browser defaults cannot override the initial hidden state. */
+.onboard-mask[hidden],
+.picker-mask[hidden] {
+  display: none;
+}
+
+/* A desktop browser can have much less usable height than a phone screen. */
+.picker-sheet {
+  max-height: min(680px, 82dvh);
+  overflow-y: auto;
+}
+
+.picker-loading {
+  margin: 44px 0 56px;
+  text-align: center;
+  color: #7a8298;
+  font-size: 16px;
+}
+
+/* 地区选择必须完成省、市、区县三级后才允许确认。 */
+#picker-confirm:disabled {
+  cursor: not-allowed;
+  background: #dfe2f1 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.wheel.is-disabled {
+  display: grid;
+  place-items: center;
+  color: #b4b9c8;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Existing local accounts are intentionally a separate, compact test-only chooser. */
+.account-sheet { max-height: min(610px, 82dvh); overflow-y: auto; }
+.account-list { display: grid; gap: 10px; margin: 16px 0 4px; text-align: left; }
+.account-list > p { margin: 8px 0; line-height: 1.6; }
+.account-option { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; border: 1px solid #e4e7f2; border-radius: 16px; background: #fafbff; padding: 14px 15px; color: #242838; text-align: left; }
+.account-option:hover { border-color: #8a82f6; background: #f5f4ff; }
+.account-option b { font-size: 16px; }
+.account-option small { color: #81889b; font-size: 12px; }
