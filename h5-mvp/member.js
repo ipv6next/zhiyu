@@ -2,7 +2,7 @@ const $=s=>document.querySelector(s);
 const actor=ZhiyuDemo.actor;
 const api=async data=>{const r=await fetch('/api/account',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const d=await r.json();if(!r.ok)throw Error(d.error||'暂时无法读取数据');return d};
 const withActor=path=>ZhiyuDemo.query(path,{actor});
-function refreshLinks(){[['#back-link','account.html'],['#twin-link','twin.html'],['#questions-link','twin.html'],['#matches-link','matches.html'],['#nav-discover','matches.html']].forEach(([s,p])=>{const e=$(s);if(e)e.href=withActor(p)});}
+function refreshLinks(){[['#back-link','account.html'],['#twin-link','twin.html'],['#questions-link','light-twin.html'],['#interview-link','interview.html'],['#matches-link','matches.html'],['#nav-discover','matches.html']].forEach(([s,p])=>{const e=$(s);if(e)e.href=withActor(p)});}
 function text(tag,value){const node=document.createElement(tag);node.textContent=value;return node;}
 function renderRights(rights){
   const box=$('#rights-card');box.replaceChildren();
